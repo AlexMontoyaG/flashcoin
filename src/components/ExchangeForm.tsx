@@ -50,7 +50,7 @@ export default function ExchangeForm({ onContinue, onAmountChange, onBankChange,
     
     if (numValue >= MIN_WLD) {
       const usdtAmount = numValue * wldPrice;
-      const copValue = Math.floor(usdtAmount * usdtCopPrice) - (COMMISSION);
+      const copValue = Math.floor(usdtAmount * usdtCopPrice) - (2000);
       setCopAmount(formatCurrency(copValue));
       onAmountChange(copValue);
     } else {
