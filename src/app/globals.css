@@ -1,0 +1,380 @@
+:root {
+  --primary-color: #1a1a1a;
+  --secondary-color: #f5f5f5;
+  --accent-color: #007bff;
+  --text-color: #333;
+  --border-color: #e0e0e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--secondary-color);
+}
+
+.app-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+  background: white;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding-top: 1rem;
+}
+
+.steps-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+
+.step {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.step.active {
+  background: var(--primary-color);
+}
+
+.step-line {
+  flex: 1;
+  height: 2px;
+  background: #e0e0e0;
+  max-width: 80px;
+}
+
+.step-content {
+  padding: 1rem;
+}
+
+h2 {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.exchange-container, .form-container, .wallet-container {
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.exchange-section {
+  margin-bottom: 1rem;
+}
+
+.currency-input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.currency-input:focus-within {
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.currency-input input[type="number"] {
+  text-align: right;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+  margin: 0;
+  border: none;
+  font-size: 1.2rem;
+  width: 100%;
+  outline: none;
+  font-weight: 600;
+  background: transparent;
+}
+
+.currency-input input[type="number"]::-webkit-outer-spin-button,
+.currency-input input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+  display: none;
+}
+
+.currency-input span {
+  text-align: right;
+  font-size: 1.2rem;
+  margin-left: auto;
+  font-weight: 600;
+}
+
+.min-amount-warning {
+  color: #dc3545;
+  font-size: 1rem;
+  margin: 0.8rem 0;
+  font-weight: bold;
+  display: block;
+}
+
+.min-amount-warning.hidden {
+  display: none;
+}
+
+.bank-selection select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  font-size: 1rem;
+  background: white;
+  margin-top: 0.5rem;
+}
+
+.button-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.back-btn,
+.continue-btn,
+.whatsapp-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.continue-btn-full {
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto;
+  max-width: calc(100% - 3rem);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.continue-btn-full.disabled,
+.continue-btn-full:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+  position: relative;
+}
+
+.input-group input,
+.input-group select,
+.bank-selection select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.bank-selection select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-btn {
+  background: var(--secondary-color);
+}
+
+.continue-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.continue-btn.disabled,
+.continue-btn:disabled {
+  background: #cccccc !important;
+  cursor: not-allowed;
+  opacity: 0.7;
+  position: relative;
+}
+
+.continue-btn.disabled::after,
+.continue-btn:disabled::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.1) 20px
+  );
+}
+
+.whatsapp-btn {
+  background: #25d366;
+  color: white;
+  gap: 0.5rem;
+}
+
+.qr-container {
+  margin: 2rem auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: fit-content;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 1px 3px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.wallet-address {
+  background: var(--secondary-color);
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.wallet-address p {
+  flex: 1;
+  word-break: break-all;
+  font-family: monospace;
+}
+
+.copy-btn {
+  padding: 0.5rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.copy-btn:hover {
+  background: #0056b3;
+}
+
+.summary {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.summary p {
+  margin: 0.5rem 0;
+}
+
+.amount {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.whatsapp-message {
+  margin: 1rem 0;
+  color: #666;
+}
+
+.home-btn {
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.form-container {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.wallet-container {
+  text-align: center;
+}
+
+.wallet-container h2,
+.wallet-container p,
+.wallet-address {
+  text-align: center;
+}
