@@ -48,7 +48,7 @@ Banco: ${selectedBank}${formData?.accountType ? `\nTipo de cuenta: ${formData.ac
 Cantidad WLD: ${wldAmount}
 Total a recibir: ${formatCurrency(amount)}`;
 
-    const whatsappUrl = `https://wa.me/+573222222222?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+573227731923?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
 
